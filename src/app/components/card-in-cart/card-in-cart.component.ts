@@ -16,12 +16,11 @@ export class CardInCartComponent {
   @Output() cartChange = new EventEmitter<IProductItem[]>();
   deleteFromCart(id: string){
     this.ProductsService.deleteProduct(id).subscribe(() => {
-      this.cart.find((item) => {
-        if (id === item.id) {
-          this.cart.splice(0, 1)
-          this.cartChange.emit(this.cart);
-        }
-      })
+      const index = this.cart.findIndex(item => item.id === id);
+      if (index !== -1) {
+        this.cart.splice(index, 1);
+        this.cartChange.emit(this.cart);
+      }
     })
   }
 
