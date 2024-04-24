@@ -1,0 +1,21 @@
+<div class="container">
+  <app-header [count]="count"></app-header>
+  <div style="margin-top: 30px">
+    <div style="font-size: 20px; margin-bottom: 20px">Корзина</div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between">
+      <div>
+        @for (item of cart; track item.id) {
+        <app-card-in-cart [data]="item" [(cart)]="cart"></app-card-in-cart>
+        }
+      </div>
+      <div class="total">
+        <div style="display: flex; justify-content: space-between">
+          <div>ИТОГО</div>
+          <div>₽ {{itog}}</div>
+        </div>
+        <div class="buy"><p>Перейти к оформлению</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
